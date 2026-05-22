@@ -11,8 +11,8 @@
 <p align="center">
   <a href="#-overview">Overview</a> •
   <a href="#-architecture">Architecture</a> •
-  <a href="#%EF%B8%8F-installation">Installation</a> •
-  <a href="#-usage">Usage</a>
+  <a href="#%EF%B8%8F-project-status">Status</a> •
+  <a href="#-installation">Installation</a>
 </p>
 
 </div>
@@ -31,18 +31,29 @@ The pipeline assigns a priority tier to every gene based on dual-layer evidence:
 
 | Priority Tier | Criteria | Interpretation |
 | :--- | :--- | :--- |
-| 🔴 **HIGH** | Rare damaging variant (SAS AF < 1%) + Significant DEG | Both layers agree - strongest evidence |
-| 🟠 **MEDIUM_V** | Rare damaging variant only | Genetic evidence, no expression change |
-| 🔵 **MEDIUM_E** | Significant DEG only | Expression change, no somatic mutation |
-| ⚪ **LOW** | Neither criterion met | No evidence in this analysis |
-
-## ⚙️ Installation
-*Instructions for setting up the Conda environment and downloading the ANNOVAR databases will be added upon pipeline completion.*
-
-## 🚀 Usage
-*Code execution commands and Streamlit web app instructions will be documented here.*
+| 🔴 **HIGH** | Rare damaging variant (SAS AF < 1%) + Significant DEG | Both layers agree |
+| 🟠 **MEDIUM_V** | Rare damaging variant only | Genetic evidence only |
+| 🔵 **MEDIUM_E** | Significant DEG only | Transcriptomic evidence only |
+| ⚪ **LOW** | Neither criterion met | Baseline |
 
 ---
-<div align="center">
-  <i>~ SHIBASIS RATH</i>
-</div>
+
+## 🏗️ Project Status (Phase 0: Complete)
+The computational environment is containerized and verified.
+
+| Component | Status | Tools |
+| :--- | :--- | :--- |
+| **Conda Environment** | ✅ Active | `mutexpress` (Python 3.10) |
+| **Bioinformatics Suite** | ✅ Verified | `hisat2`, `samtools`, `bcftools`, `tabix` |
+| **Analysis Stack** | ✅ Verified | `DESeq2`, `clusterProfiler`, `Pandas`, `SciPy` |
+| **Annotation Engine** | ⏳ Pending | ANNOVAR (Phase 1) |
+
+---
+
+## ⚙️ Installation
+The pipeline is managed via Conda to ensure environment reproducibility.
+
+1. **Clone the repository:**
+```bash
+   git clone [https://github.com/Shibasis-Rath/mutexpress-india.git](https://github.com/Shibasis-Rath/mutexpress-india.git)
+   cd mutexpress-india
