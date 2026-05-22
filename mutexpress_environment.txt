@@ -1,0 +1,56 @@
+# packages in environment at /opt/homebrew/Caskroom/miniconda/base/envs/mutexpress:
+#
+# Name                       Version          Build                Channel
+_openmp_mutex                4.5              7_kmp_llvm           conda-forge
+bcftools                     1.23.1           h0ba0a6f_0           bioconda
+bzip2                        1.0.8            h80987f9_6
+c-ares                       1.34.6           hc919400_0           conda-forge
+ca-certificates              2026.5.20        hbd8a1cb_0           conda-forge
+fastqc                       0.12.1           hdfd78af_0           bioconda
+font-ttf-dejavu-sans-mono    2.37             hab24e00_0           conda-forge
+fontconfig                   2.17.1           h2b252f5_0           conda-forge
+gsl                          2.7              h6e638da_0           conda-forge
+hisat2                       2.2.2            haef7865_0           bioconda
+htslib                       1.23.1           h44a9eb5_0           bioconda
+krb5                         1.22.2           h385eeb1_0           conda-forge
+libblas                      3.11.0           7_h51639a9_openblas  conda-forge
+libcblas                     3.11.0           7_hb0561ab_openblas  conda-forge
+libcurl                      8.19.0           hd5a2499_0           conda-forge
+libcxx                       22.1.2           hf894667_0
+libdeflate                   1.25             hc11a715_0           conda-forge
+libedit                      3.1.20250104     pl5321hafb1f1b_0     conda-forge
+libev                        4.33             h93a5062_2           conda-forge
+libexpat                     2.8.0            h50f4ffc_0
+libffi                       3.4.8            hcfc0b96_2
+libfreetype                  2.14.2           hce30654_0           conda-forge
+libfreetype6                 2.14.2           hdfa99f5_0           conda-forge
+libgcc                       15.2.0           hcbb3090_19          conda-forge
+libgfortran                  15.2.0           h07b0088_19          conda-forge
+libgfortran5                 15.2.0           hdae7583_19          conda-forge
+liblzma                      5.8.2            h8088a28_0           conda-forge
+libnghttp2                   1.68.1           h8f3e76b_0           conda-forge
+libopenblas                  0.3.33           openmp_he657e61_0    conda-forge
+libpng                       1.6.55           h132b30e_0           conda-forge
+libssh2                      1.11.1           h1590b86_0           conda-forge
+libzlib                      1.3.1            hb4cf58c_1
+llvm-openmp                  22.1.6           hc7d1edf_0           conda-forge
+ncurses                      6.5              hee39554_0
+openjdk                      25.0.2           h258754b_0           conda-forge
+openssl                      3.6.2            hd24854e_0           conda-forge
+packaging                    26.0             py310hca03da5_0
+perl                         5.32.1           7_h4614cfb_perl5     conda-forge
+pip                          26.0.1           pyhc872135_1
+python                       3.10.20          h4f1bc5c_0
+readline                     8.3              h0b18652_0
+samtools                     1.23.1           hc612e98_0           bioconda
+setuptools                   82.0.1           py310hca03da5_0
+sqlite                       3.51.2           h67002bf_0
+subread                      2.1.1            hba9b596_0           bioconda
+tabix                        1.11             hdfd78af_0           bioconda
+tk                           8.6.15           hcd8a7d5_0
+trimmomatic                  0.40             hdfd78af_0           bioconda
+tzdata                       2026a            he532380_0
+wheel                        0.46.3           py310hca03da5_0
+xz                           5.8.2            h8bbcb1d_0
+zlib                         1.3.1            hb4cf58c_1
+zstd                         1.5.7            hbf9d68e_6           conda-forge
