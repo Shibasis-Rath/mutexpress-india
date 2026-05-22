@@ -51,9 +51,12 @@ The computational environment is containerized and verified.
 ---
 
 ## ⚙️ Installation
-The pipeline is managed via Conda to ensure environment reproducibility.
+*Instructions for setting up the Conda environment and downloading the ANNOVAR databases will be added upon pipeline completion.*
 
-1. **Clone the repository:**
-```bash
-   git clone [https://github.com/Shibasis-Rath/mutexpress-india.git](https://github.com/Shibasis-Rath/mutexpress-india.git)
-   cd mutexpress-india
+## 🚀 Usage
+*Code execution commands and Streamlit web app instructions will be documented here.*
+
+---
+<div align="center">
+  <i>~ SHIBASIS RATH</i>
+</div>
