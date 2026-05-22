@@ -54,8 +54,3 @@ The computational environment is containerized and verified.
 
 ## ⚙️ Installation
 The pipeline is managed via Conda to ensure environment reproducibility.
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/Shibasis-Rath/mutexpress-india.git](https://github.com/Shibasis-Rath/mutexpress-india.git)
-   cd mutexpress-india
