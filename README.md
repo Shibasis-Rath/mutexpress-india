@@ -12,7 +12,9 @@
   <a href="#-overview">Overview</a> •
   <a href="#-architecture">Architecture</a> •
   <a href="#%EF%B8%8F-project-status">Status</a> •
-  <a href="#-installation">Installation</a>
+  <a href="#-installation">Installation</a> •
+  <a href="#-usage">Usage</a> •
+  <a href="#-contact">Contact</a>
 </p>
 
 </div>
@@ -51,12 +53,9 @@ The computational environment is containerized and verified.
 ---
 
 ## ⚙️ Installation
-*Instructions for setting up the Conda environment and downloading the ANNOVAR databases will be added upon pipeline completion.*
+The pipeline is managed via Conda to ensure environment reproducibility.
 
-## 🚀 Usage
-*Code execution commands and Streamlit web app instructions will be documented here.*
-
----
-<div align="center">
-  <i>~ SHIBASIS RATH</i>
-</div>
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Shibasis-Rath/mutexpress-india.git](https://github.com/Shibasis-Rath/mutexpress-india.git)
+   cd mutexpress-india
