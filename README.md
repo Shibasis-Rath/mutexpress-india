@@ -50,9 +50,9 @@ The computational environment is fully containerized via Conda for Apple Silicon
 
 ### Phase 1: VCF Layer & Variant Annotation (⏳ IN PROGRESS)
 * ✅ **GDC Client:** Installed `gdc-client` v2.3.0.
-* ✅ **Data Acquisition:** Successfully bulk-downloaded 500 open-access Masked Somatic Mutation MAF files for the TCGA-BRCA cohort.
-* ⏳ **Annotation:** ANNOVAR registration and 15GB gnomAD database download pending.
-* ⏳ **Filtering:** Custom Python filtering script (SAS AF < 1% + CADD > 20) pending.
+* ✅ **Data Acquisition:** Successfully bulk-downloaded 504 open-access Masked Somatic Mutation MAF files for the TCGA-BRCA cohort.
+* ✅ **Annotation Optimization:** Bypassed the manual ANNOVAR local setup and 15GB database download after discovering pre-computed `gnomAD_SAS_AF` frequencies natively embedded within the TCGA MAF headers.
+* ⏳ **Filtering:** Custom Python filtering script (SAS AF < 1% + Functional Impact) pending.
 
 ### Future Phases
 * ⏳ **Phase 2:** RNA-Seq Layer (DESeq2 on GSE62944)
@@ -67,7 +67,7 @@ To reproduce the computational environment on macOS/Unix:
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/yourusername/mutexpress-india.git](https://github.com/yourusername/mutexpress-india.git)
+git clone [https://github.com/Shibasis-Rath/mutexpress-india.git](https://github.com/Shibasis-Rath/mutexpress-india.git)
 cd mutexpress-india
 
 # 2. Create the conda environment
