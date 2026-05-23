@@ -1,0 +1,3 @@
+id	submitter_id	entity_type	entity_id	category	classification	created_datetime	status	notes
+071361df-8eb3-4753-a507-fdbf5069fdec	\N	masked_somatic_mutation	1304fc51-cb16-40b1-a5fd-5b6703028347	General	Notification	2022-02-28T15:18:41.867222-06:00	Approved	Variants from SomaticSniper are not included.
+6a2bdd98-221d-594e-9b07-3bd02b3107c5	20690	case	5c9d8163-a68e-43ce-9cba-effb7405761e	Neoadjuvant therapy	Notification	2014-06-11T00:00:00	Approved	Patient recieved neoadjuvant therapy for the TCGA sample (Armidex).

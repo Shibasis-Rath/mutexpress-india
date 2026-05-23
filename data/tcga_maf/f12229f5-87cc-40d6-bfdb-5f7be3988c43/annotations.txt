@@ -1,0 +1,4 @@
+id	submitter_id	entity_type	entity_id	category	classification	created_datetime	status	notes
+260897f4-5389-4d69-8cb9-e2975a0f2aee	\N	masked_somatic_mutation	f12229f5-87cc-40d6-bfdb-5f7be3988c43	General	Notification	2022-02-28T13:05:03.833081-06:00	Approved	Variants from SomaticSniper are not included.
+3458835d-b458-5dda-bd84-a9f04920234b	3182	case	14b95463-2108-4921-afc2-e29eef52b18f	Neoadjuvant therapy	Notification	2011-08-19T00:00:00	Approved	Subject is positive for neoadjuvant therapy.
+34dd7b7a-71b5-5704-beef-604f37b3796f	1055	case	14b95463-2108-4921-afc2-e29eef52b18f	Prior malignancy	Notification	2010-12-14T00:00:00	Approved	Case had Prior malignancy

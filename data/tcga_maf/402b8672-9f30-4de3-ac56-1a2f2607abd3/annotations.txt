@@ -1,0 +1,3 @@
+id	submitter_id	entity_type	entity_id	category	classification	created_datetime	status	notes
+86860d1a-6a46-5217-b181-5c513906a15b	20715	case	d0b78f3f-a198-437a-ab8c-204345d3b75d	Neoadjuvant therapy	Notification	2014-06-16T00:00:00	Approved	systemic treatment
+47a99067-86fd-4c61-8e06-0b2456e85081	\N	masked_somatic_mutation	402b8672-9f30-4de3-ac56-1a2f2607abd3	General	Notification	2022-02-28T15:29:38.955517-06:00	Approved	Variants from SomaticSniper are not included.

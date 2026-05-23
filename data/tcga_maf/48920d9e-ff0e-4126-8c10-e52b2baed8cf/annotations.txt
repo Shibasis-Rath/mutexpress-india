@@ -1,0 +1,3 @@
+id	submitter_id	entity_type	entity_id	category	classification	created_datetime	status	notes
+a1fb1dc5-4e68-55d0-b1da-f85f3a8f7345	23697	case	16fc3677-0393-4ed1-ad3f-c8355f056369	History of unacceptable prior treatment related to a prior/other malignancy	Notification	2014-11-25T00:00:00	Approved	Patient had prior breast malignancy (in opposite breast) with systemic chemotherapy (Tamoxifen).
+30ae247e-f6b8-4e0a-a136-59b32dd9e303	\N	masked_somatic_mutation	48920d9e-ff0e-4126-8c10-e52b2baed8cf	General	Notification	2022-02-28T13:07:27.233941-06:00	Approved	Variants from SomaticSniper are not included.

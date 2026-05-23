@@ -1,0 +1,3 @@
+id	submitter_id	entity_type	entity_id	category	classification	created_datetime	status	notes
+eb3c4f11-e4ef-41dc-841b-c110dfb7c1aa	\N	masked_somatic_mutation	d6709b52-b2fb-4b89-89d4-a426de3f21f0	General	Notification	2022-02-28T13:08:14.894242-06:00	Approved	Variants from SomaticSniper are not included.
+eece96b7-df23-57b5-bef5-e00edc5a4ea3	1052	case	09765b0a-94f6-47d2-af56-93368084ac3a	Prior malignancy	Notification	2010-12-14T00:00:00	Approved	Case had prior malignancy
