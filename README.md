@@ -42,20 +42,19 @@ The pipeline assigns a priority tier to every gene based on dual-layer evidence.
 ## 🏗️ Project Status
 
 ### Phase 0: Prerequisites & Environment Setup (✅ COMPLETE)
-The computational environment is fully containerized via Conda for Apple Silicon (ARM64) architecture.
-* **Conda Environment:** `mutexpress` (Python 3.10)
-* **Bioinformatics Suite:** `bcftools` (1.23.1), `samtools` (1.23.1), `hisat2` (2.2.2), `tabix` (1.23.1)
-* **Python Stack:** `pandas`, `numpy`, `scipy`, `biopython`, `plotly`, `streamlit`
-* **R Stack (v4.5.2):** `DESeq2`, `clusterProfiler`, `org.Hs.eg.db`, `EnhancedVolcano`
+* **Environment:** Fully containerized Conda environment (`mutexpress`, Python 3.10).
+* **Tooling:** All core bioinformatics tools (`bcftools`, `samtools`, `hisat2`, `tabix`) verified.
 
-### Phase 1: VCF Layer & Variant Annotation (⏳ IN PROGRESS)
-* ✅ **GDC Client:** Installed `gdc-client` v2.3.0.
-* ✅ **Data Acquisition:** Successfully bulk-downloaded 504 open-access Masked Somatic Mutation MAF files for the TCGA-BRCA cohort.
-* ✅ **Annotation Optimization:** Bypassed the manual ANNOVAR local setup and 15GB database download after discovering pre-computed `gnomAD_SAS_AF` frequencies natively embedded within the TCGA MAF headers.
-* ⏳ **Filtering:** Custom Python filtering script (SAS AF < 1% + Functional Impact) pending.
+### Phase 1: VCF Layer & Variant Annotation (✅ COMPLETE)
+* ✅ **Data Acquisition:** 504 open-access Masked Somatic Mutation MAF files downloaded (TCGA-BRCA).
+* ✅ **Annotation & Filtering:** Successfully merged MAF files (47,844 variants). Ran `filter_variants.py` to produce `priority_variants.tsv` (36,106 priority variants identified).
+* ✅ **Validation:** Confirmed key driver genes (BRCA1, BRCA2, TP53, PIK3CA, ERBB2) in high-priority output.
+
+### Phase 2: RNA-Seq Layer (⏳ IN PROGRESS)
+* ⏳ **Data Acquisition:** Download GSE62944 RNA-Seq clinical metadata.
+* ⏳ **Differential Expression:** Perform DESeq2 analysis for tumor vs. normal comparisons.
 
 ### Future Phases
-* ⏳ **Phase 2:** RNA-Seq Layer (DESeq2 on GSE62944)
 * ⏳ **Phase 3:** Dual-Layer Integration
 * ⏳ **Phase 4:** Visualization & Streamlit Web App
 * ⏳ **Phase 5:** Validation (Ablation testing vs COSMIC Cancer Gene Census)
