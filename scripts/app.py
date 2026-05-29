@@ -1,59 +1,31 @@
-import os
-import pandas as pd
 import streamlit as st
+import pandas as pd
 import plotly.express as px
+import os
 
-# Set up the page
 st.set_page_config(page_title="MutExpress-India", page_icon="🧬", layout="wide")
 st.title("🧬 MutExpress-India Dashboard")
-st.markdown("**Indian-Population-Aware Variant & Expression Prioritization**")
 
-# --- CLOUD-SAFE PATH FINDING ---
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-CSV_PATH = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "results", "mutexpress_india_output.csv"))
+# Find the results folder
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+RESULTS_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "results"))
 
-# Try to load the data
-try:
-    if os.path.exists(CSV_PATH):
-        df = pd.read_csv(CSV_PATH)
-    else:
-        df = pd.read_csv("results/mutexpress_india_output.csv")
-        
-    st.success("Phase 3 Integration Data Loaded Successfully!")
-    
-    # Calculate metrics
-    high_count = len(df[df["MutExpress_Priority"] == "HIGH"])
-    med_v_count = len(df[df["MutExpress_Priority"] == "MEDIUM_V"])
-    med_e_count = len(df[df["MutExpress_Priority"] == "MEDIUM_E"])
-    
-    # Display top-level metrics
-    col1, col2, col3 = st.columns(3)
-    col1.metric("HIGH Priority Genes", high_count)
-    col2.metric("MEDIUM_V (Variant Only)", med_v_count)
-    col3.metric("MEDIUM_E (Expression Only)", med_e_count)
-    
-    st.markdown("---")
-    
-    # Display the Pie Chart
-    st.subheader("Priority Distribution")
-    counts = df["MutExpress_Priority"].value_counts().reset_index()
-    counts.columns = ["Priority", "Count"]
-    fig_pie = px.pie(counts, names="Priority", values="Count", color="Priority",
-                     color_discrete_map={"HIGH": "#E63946", "MEDIUM_V": "#F4A261", "MEDIUM_E": "#457B9D", "LOW": "#A8DADC"})
-    st.plotly_chart(fig_pie, use_container_width=True)
-    
-    # Display the Data Table
-    st.subheader("Top Ranked Priority Genes")
-    st.dataframe(df.head(100))
-    
-    # Add a download button for the results
-    csv = df.to_csv(index=False).encode('utf-8')
-    st.download_button(
-        label="Download Full Results CSV",
-        data=csv,
-        file_name='mutexpress_india_final.csv',
-        mime='text/csv',
-    )
+# Load data
+df = pd.read_csv(os.path.join(RESULTS_DIR, "mutexpress_india_output.csv"))
 
-except Exception as e:
-    st.error(f"Error loading results: {e}. Attempted to look in {CSV_PATH}")
+# Show Pie Chart
+counts = df["MutExpress_Priority"].value_counts().reset_index()
+fig = px.pie(counts, names="Priority", values="count", title="Priority Distribution")
+st.plotly_chart(fig)
+
+# Show Enrichment Tabs
+st.header("Phase 5: Pathway Enrichment")
+tab1, tab2 = st.tabs(["GO Enrichment", "KEGG Enrichment"])
+
+with tab1:
+    st.image(os.path.join(RESULTS_DIR, "GO_dotplot.png"))
+    st.dataframe(pd.read_csv(os.path.join(RESULTS_DIR, "GO_enrichment.csv")))
+
+with tab2:
+    st.image(os.path.join(RESULTS_DIR, "KEGG_dotplot.png"))
+    st.dataframe(pd.read_csv(os.path.join(RESULTS_DIR, "KEGG_enrichment.csv")))
