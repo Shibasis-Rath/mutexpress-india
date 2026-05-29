@@ -1,0 +1,4 @@
+Condition,Total Genes Flagged,CGC Drivers Found,Recall (%),Precision (%)
+VCF-Only (Variants),12736,19,95.0,0.15
+DEG-Only (Expression),3306,4,20.0,0.12
+Dual-Layer (MutExpress),1702,4,20.0,0.24
