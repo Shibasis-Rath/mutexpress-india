@@ -1,5 +1,6 @@
-import streamlit as st
+import os
 import pandas as pd
+import streamlit as st
 import plotly.express as px
 
 # Set up the page
@@ -7,9 +8,17 @@ st.set_page_config(page_title="MutExpress-India", page_icon="🧬", layout="wide
 st.title("🧬 MutExpress-India Dashboard")
 st.markdown("**Indian-Population-Aware Variant & Expression Prioritization**")
 
-# Try to load the data we generated in Phase 3
+# --- CLOUD-SAFE PATH FINDING ---
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+CSV_PATH = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "results", "mutexpress_india_output.csv"))
+
+# Try to load the data
 try:
-    df = pd.read_csv("../results/mutexpress_india_output.csv")
+    if os.path.exists(CSV_PATH):
+        df = pd.read_csv(CSV_PATH)
+    else:
+        df = pd.read_csv("results/mutexpress_india_output.csv")
+        
     st.success("Phase 3 Integration Data Loaded Successfully!")
     
     # Calculate metrics
@@ -46,5 +55,5 @@ try:
         mime='text/csv',
     )
 
-except FileNotFoundError:
-    st.error("Results file not found. Please ensure Phase 3 is completed and mutexpress_india_output.csv exists in the results folder.")
+except Exception as e:
+    st.error(f"Error loading results: {e}. Attempted to look in {CSV_PATH}")
