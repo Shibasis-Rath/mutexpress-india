@@ -628,6 +628,7 @@ with tab3:
     with t_go:
         go_img = rp("GO_dotplot.png")
         go_csv = rp("GO_enrichment.csv")
+        go_df = pd.read_csv(go_csv) if os.path.exists(go_csv) else None
         if os.path.exists(go_img):
             st.markdown('<div class="chart-card"><div class="chart-title">GO Biological Process — top enriched terms</div>', unsafe_allow_html=True)
             st.image(go_img, use_container_width=True)
@@ -644,6 +645,7 @@ with tab3:
     with t_kegg:
         kegg_img = rp("KEGG_dotplot.png")
         kegg_csv = rp("KEGG_enrichment.csv")
+        kegg_df = pd.read_csv(kegg_csv) if os.path.exists(kegg_csv) else None
         if os.path.exists(kegg_img):
             st.markdown('<div class="chart-card"><div class="chart-title">KEGG Pathways — top enriched disease pathways</div>', unsafe_allow_html=True)
             st.image(kegg_img, use_container_width=True)
