@@ -7,7 +7,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Core styling with dark, cinematic aesthetics
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
@@ -22,7 +21,6 @@ html, body, [class*="css"] {
 }
 .stApp { background-color: var(--bg) !important; }
 
-/* Hero Banner */
 .hero-box {
     background: linear-gradient(135deg, #0d1f2e, #081420);
     border: 1px solid var(--border);
@@ -48,8 +46,6 @@ html, body, [class*="css"] {
     margin: 0 auto;
     line-height: 1.7;
 }
-
-/* Feature Cards */
 .feature-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -84,7 +80,6 @@ html, body, [class*="css"] {
 </style>
 """, unsafe_allow_html=True)
 
-# Render Hero Section
 st.markdown("""
 <div class="hero-box">
     <div class="hero-title">MutExpress <span style="color:#00D4C8">India</span></div>
@@ -101,7 +96,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Render Module Cards
 col1, col2 = st.columns(2)
 
 with col1:
@@ -110,8 +104,7 @@ with col1:
         <div class="feature-title">01 · Data Converter</div>
         <p style="color:#7A8FA6; line-height: 1.7; font-size: 0.95rem;">
             <strong>Start here if you have raw data.</strong> The universal converter automatically standardizes 
-            cBioPortal, GDC, TCGA, or custom format files into the exact formats required by MutExpress: 
-            <code>priority_variants.tsv</code> and <code>significant_degs.csv</code>.
+            cBioPortal, GDC, TCGA, or custom format files into the exact formats required by MutExpress.
         </p>
     </div>
     """, unsafe_allow_html=True)
