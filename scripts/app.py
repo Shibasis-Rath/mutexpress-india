@@ -873,6 +873,81 @@ with tab5:
                 st.download_button("⬇ Download Full Results", data=dl,
                                    file_name="mutexpress_custom_results.csv", mime="text/csv")
 
+                # GO and KEGG enrichment on HIGH tier genes
+                high_genes = merged[merged["MutExpress_Priority"]=="HIGH"]["gene"].dropna().tolist()
+                if len(high_genes) >= 5:
+                    st.markdown("""
+                    <div class="section-header" style="margin-top:2rem">
+                      <span class="section-num">ENRICHMENT</span>
+                      <span class="section-title">Pathway Analysis on HIGH Priority Genes</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    try:
+                        import gseapy as gp
+                        enr_tab1, enr_tab2 = st.tabs(["Gene Ontology (GO)", "KEGG Pathways"])
+                        with enr_tab1:
+                            with st.spinner("Running GO enrichment — this uses internet, takes ~30s..."):
+                                go_res = gp.enrichr(
+                                    gene_list=high_genes,
+                                    gene_sets="GO_Biological_Process_2023",
+                                    organism="human", outdir=None
+                                )
+                                go_df = go_res.results
+                                go_df = go_df[go_df["Adjusted P-value"] < 0.05].head(15)
+                                if not go_df.empty:
+                                    fig_go = px.bar(
+                                        go_df.sort_values("Adjusted P-value"),
+                                        x="Combined Score", y="Term", orientation="h",
+                                        color="Adjusted P-value",
+                                        color_continuous_scale=["#00D4C8","#0B1929"],
+                                        title="GO Biological Process — enriched terms"
+                                    )
+                                    fig_go.update_layout(
+                                        paper_bgcolor="rgba(0,0,0,0)",
+                                        plot_bgcolor="rgba(17,23,34,1)",
+                                        font=dict(family="DM Sans", color="#7A8FA6"),
+                                        yaxis=dict(tickfont=dict(family="Space Mono", size=9, color="#7A8FA6")),
+                                        xaxis=dict(tickfont=dict(family="Space Mono", size=9, color="#7A8FA6")),
+                                        height=500, margin=dict(t=40,b=20,l=10,r=10)
+                                    )
+                                    st.plotly_chart(fig_go, use_container_width=True)
+                                    st.dataframe(go_df[["Term","Overlap","Adjusted P-value","Combined Score"]].head(15), use_container_width=True)
+                                else:
+                                    st.info("No significant GO terms found (padj < 0.05).")
+                        with enr_tab2:
+                            with st.spinner("Running KEGG enrichment..."):
+                                kegg_res = gp.enrichr(
+                                    gene_list=high_genes,
+                                    gene_sets="KEGG_2021_Human",
+                                    organism="human", outdir=None
+                                )
+                                kegg_df = kegg_res.results
+                                kegg_df = kegg_df[kegg_df["Adjusted P-value"] < 0.05].head(15)
+                                if not kegg_df.empty:
+                                    fig_kegg = px.bar(
+                                        kegg_df.sort_values("Adjusted P-value"),
+                                        x="Combined Score", y="Term", orientation="h",
+                                        color="Adjusted P-value",
+                                        color_continuous_scale=["#F4793B","#0B1929"],
+                                        title="KEGG Pathways — enriched pathways"
+                                    )
+                                    fig_kegg.update_layout(
+                                        paper_bgcolor="rgba(0,0,0,0)",
+                                        plot_bgcolor="rgba(17,23,34,1)",
+                                        font=dict(family="DM Sans", color="#7A8FA6"),
+                                        yaxis=dict(tickfont=dict(family="Space Mono", size=9, color="#7A8FA6")),
+                                        xaxis=dict(tickfont=dict(family="Space Mono", size=9, color="#7A8FA6")),
+                                        height=500, margin=dict(t=40,b=20,l=10,r=10)
+                                    )
+                                    st.plotly_chart(fig_kegg, use_container_width=True)
+                                    st.dataframe(kegg_df[["Term","Overlap","Adjusted P-value","Combined Score"]].head(15), use_container_width=True)
+                                else:
+                                    st.info("No significant KEGG pathways found (padj < 0.05).")
+                    except Exception as e:
+                        st.warning(f"Enrichment error: {e}")
+                else:
+                    st.info(f"Need at least 5 HIGH priority genes for enrichment. Currently: {len(high_genes)}")
+
             except Exception as e:
                 st.error(f"Error: {e}. Check that your files have the required columns.")
     else:
