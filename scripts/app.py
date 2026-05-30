@@ -802,6 +802,16 @@ with tab5:
                     "gnomAD_SAS_AF": "min"
                 }).reset_index()
 
+                # Normalize column names to lowercase for matching
+                u_degs.columns = [c.lower() for c in u_degs.columns]
+                if "gene" in u_degs.columns:
+                    u_degs["gene"] = u_degs["gene"].astype(str).str.strip().str.strip('"')
+                # Rename log2foldchange back to standard name
+                col_map = {c: c for c in u_degs.columns}
+                if "log2foldchange" in u_degs.columns:
+                    u_degs = u_degs.rename(columns={"log2foldchange": "log2FoldChange"})
+                if "hugo_symbol" in u_degs.columns:
+                    u_degs = u_degs.rename(columns={"hugo_symbol": "gene"})
                 deg_cols = [c for c in ["gene","log2FoldChange","padj","direction"] if c in u_degs.columns]
                 merged = pd.merge(var_agg, u_degs[deg_cols], on="gene", how="outer")
 
@@ -840,6 +850,23 @@ with tab5:
                   </div>
                 </div>
                 """, unsafe_allow_html=True)
+
+                # Show pie chart for uploaded results
+                import plotly.express as px
+                up_counts = merged["MutExpress_Priority"].value_counts().reset_index()
+                up_counts.columns = ["Priority", "Count"]
+                color_map = {"HIGH":"#FF5B5B","MEDIUM_V":"#F4793B","MEDIUM_E":"#4A9EFF","LOW":"#1E2A3A"}
+                fig_up = px.pie(up_counts, names="Priority", values="Count",
+                               color="Priority", color_discrete_map=color_map, hole=0.55,
+                               title="Your Results — Priority Distribution")
+                fig_up.update_layout(
+                    paper_bgcolor="rgba(0,0,0,0)",
+                    plot_bgcolor="rgba(0,0,0,0)",
+                    font=dict(family="DM Sans", color="#7A8FA6"),
+                    legend=dict(font=dict(family="Space Mono", size=10, color="#7A8FA6"), bgcolor="rgba(0,0,0,0)"),
+                    margin=dict(t=40,b=10,l=10,r=10), height=320
+                )
+                st.plotly_chart(fig_up, use_container_width=True)
 
                 st.dataframe(merged.head(50), use_container_width=True)
                 dl = merged.to_csv(index=False).encode("utf-8")
