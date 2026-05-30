@@ -789,7 +789,7 @@ with tab5:
                 sep = "\t" if vcf_file.name.endswith(".tsv") else ","
                 u_variants = pd.read_csv(vcf_file, sep=sep, low_memory=False)
                 u_degs     = pd.read_csv(deg_file)
-                u_degs.columns = u_degs.columns.str.strip().str.strip('"')
+                u_degs.columns = u_degs.columns.str.strip().str.strip('"').str.lower()
                 if "gene" in u_degs.columns:
                     u_degs["gene"] = u_degs["gene"].astype(str).str.strip().str.strip('"')
                 u_variants.columns = u_variants.columns.str.strip().str.strip('"')
